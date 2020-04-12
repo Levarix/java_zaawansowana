@@ -1,3 +1,4 @@
+
 package pl.jazapp.app;
 
 import javax.persistence.criteria.CriteriaBuilder;
