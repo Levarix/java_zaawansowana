@@ -1,11 +1,11 @@
-package webapp.login;
+package pl.jazapp.app.webapp;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 @RequestScoped
 @Named
-public class LoginRequest {
+public class RegisterRequest {
     private String username;
     private String password;
 

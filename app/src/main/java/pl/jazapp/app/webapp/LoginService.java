@@ -1,8 +1,5 @@
-package webapp.login;
+package pl.jazapp.app.webapp;
 
-import pl.jazapp.app.webapp.User;
-import pl.jazapp.app.webapp.UserContext;
-import pl.jazapp.app.webapp.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.enterprise.context.RequestScoped;
@@ -12,7 +9,8 @@ import java.util.Optional;
 
 @RequestScoped
 public class LoginService {
-    private UserRepository userRepository;
+    @Inject
+    UserRepository userRepository;
     private final Logger logger = LoggerFactory.getLogger(LoginService.class);
 
     @Inject
@@ -32,14 +30,12 @@ public class LoginService {
 
         if (checkingUser.isPresent()) {
             User existingCheckingUser = checkingUser.get();
-            if (!existingCheckingUser.equals(null)) {
-                if (existingCheckingUser.getPassword().equals(loginRequest.getPassword())) {
-                    userContext.login();
+            if (existingCheckingUser.getPassword().equals(loginRequest.getPassword())) {
+                userContext.login();
 
-                    logger.warn(String.format("Logged successfully with username: %s, and password: %s", loginRequest.getUsername(), loginRequest.getPassword()));
-                } else {
-                    logger.warn(String.format("Not found Username %s", loginRequest.getUsername()));
-                }
+                logger.warn(String.format("Logged successfully with username: %s, and password: %s", loginRequest.getUsername(), loginRequest.getPassword()));
+            } else {
+                logger.warn(String.format("Wrong username or password %s %s", loginRequest.getUsername(), loginRequest.getPassword()));
             }
         }
     }
