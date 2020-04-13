@@ -1,6 +1,7 @@
 package webapp.login;
 
-import pl.jazapp.app.UserMap;
+
+import pl.jazapp.app.webapp.UserContext;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -10,11 +11,19 @@ import javax.inject.Named;
 @Named
 public class LoginController {
     @Inject
-    UserMap userMap;
+    LoginService loginService;
+    @Inject
+    UserContext userContext;
 
     public String login(LoginRequest loginRequest) {
         System.out.println(String.format("Tried to login with username %s and password %s",loginRequest.getUsername(), loginRequest.getPassword()));
-        // TODO code to log in and session
-        return "/index.xhtml?faces-redirect=true";
+
+        loginService.login(loginRequest);
+
+        if(userContext.isLogged()) {
+            return "/index.xhtml?faces-redirect=true";
+        } else {
+            return "/login.xhtml?faces-redirect=true";
+        }
     }
 }

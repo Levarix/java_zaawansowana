@@ -1,5 +1,6 @@
 package pl.jazapp.app.webapp;
 
+import javax.inject.Inject;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
@@ -10,6 +11,8 @@ import java.io.IOException;
 
 @WebFilter("*")
 public class LoginFilter extends HttpFilter {
+    @Inject UserContext userContext;
+
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         if (isUserLogged() || isSiteAllowed(req)) {
@@ -25,6 +28,6 @@ public class LoginFilter extends HttpFilter {
     }
 
     private boolean isUserLogged() {
-        return false;
+        return userContext.isLogged();
     }
 }

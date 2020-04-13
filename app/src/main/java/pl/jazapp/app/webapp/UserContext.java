@@ -1,4 +1,4 @@
-package pl.jazapp.app;
+package pl.jazapp.app.webapp;
 
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -8,7 +8,6 @@ public class UserContext implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private boolean isLogged;
-
 
     public UserContext() {
     }
