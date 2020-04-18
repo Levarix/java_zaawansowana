@@ -2,6 +2,7 @@ package pl.jazapp.app.webapp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.jazapp.app.webapp.register.RegisterRequest;
 
 import javax.enterprise.context.ApplicationScoped;
 

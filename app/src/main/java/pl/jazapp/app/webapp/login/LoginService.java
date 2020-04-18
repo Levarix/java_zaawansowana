@@ -1,7 +1,11 @@
-package pl.jazapp.app.webapp;
+package pl.jazapp.app.webapp.login;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.jazapp.app.webapp.User;
+import pl.jazapp.app.webapp.UserContext;
+import pl.jazapp.app.webapp.UserRepository;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.Optional;
