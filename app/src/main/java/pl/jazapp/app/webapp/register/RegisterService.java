@@ -7,6 +7,7 @@ import pl.jazapp.app.webapp.UserRepository;
 import pl.jazapp.app.webapp.login.LoginService;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.Optional;
 
@@ -25,13 +26,26 @@ public class RegisterService {
         this.userRepository = userRepository;
     }
 
-    void register (RegisterRequest registerRequest) {
-        Optional<User> checkingUser = userRepository.findByUsername(registerRequest.getUsername());
+    boolean register (RegisterRequest registerRequest) {
 
-        if (!checkingUser.isPresent()) {
+        if (registerRequest.getPassword().equals(registerRequest.getPasswordCheck())) {
+            Optional<User> checkingUser = userRepository.findByUsername(registerRequest.getUsername());
+
+            if (!checkingUser.isPresent()) {
                 userRepository.createUser(registerRequest);
+                return true;
+            } else {
+                logger.warn(String.format("Username already exists: %s", registerRequest.getUsername()));
+                FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                        .put("error-message", "Username is already taken");
+            }
         } else {
-            logger.warn(String.format("Username already exists: %s", registerRequest.getUsername()));
+            logger.warn(String.format("Passwords do not match"));
+
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("error-message", "Passwords do not match");
         }
+
+        return false;
     }
 }

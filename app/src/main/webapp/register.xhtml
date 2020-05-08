@@ -5,17 +5,73 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
+<h:head>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
 <h:body>
     <h:form styleClass="form-base">
+        <h:outputText rendered="#{flash.containsKey('error-message')}" value ="#{flash['error-message']}" />
         <div class = "form-group">
             <h:inputText id="username" styleClass="form-control" a:placeholder="Username"
-                         value="#{registerRequest.username}"/>
+                         value="#{registerRequest.username}">
+                <f:validateLength maximum="25" />
+                <f:validator validatorId="usernameValidator" />
+            </h:inputText>
+            <h:message errorClass="error-message" for="username" />
+        </div>
+
+        <div class = "form-group">
+            <h:inputText id="email" styleClass="form-control" a:placeholder="Email"
+                         value="#{registerRequest.email}">
+                <f:validator validatorId="emailValidator" />
+            </h:inputText>
+            <h:message errorClass="error-message" for="email" />
+        </div>
+
+        <div class = "form-group">
+            <h:inputText id="first-name" styleClass="form-control" a:placeholder="First-Name"
+                         value="#{registerRequest.firstName}">
+                <f:validator validatorId="firstNameValidator" />
+            </h:inputText>
+            <h:message errorClass="error-message" for="first-name" />
+        </div>
+
+        <div class = "form-group">
+            <h:inputText id="last-name" styleClass="form-control" a:placeholder="Last-Name"
+                         value="#{registerRequest.lastName}">
+                <f:validator validatorId="lastNameValidator" />
+            </h:inputText>
+            <h:message errorClass="error-message" for="last-name" />
+        </div>
+
+        <div class = "form-group">
+            <h:inputText id="birthdate" styleClass="form-control" a:placeholder="Birthdate (DD/MM/YYYY)"
+                         value="#{registerRequest.birthDate}">
+                <f:validator validatorId="birthdateValidator" />
+            </h:inputText>
+            <h:message errorClass="error-message" for="birthdate" />
         </div>
 
         <div class = "form-group">
             <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
-                           value="#{registerRequest.password}"/>
+                           value="#{registerRequest.password}">
+                <f:validateLength maximum="25" />
+                <f:validator validatorId="passwordValidator" />
+            </h:inputSecret>
+            <h:message errorClass="error-message" for="password" />
+        </div>
+
+        <div class = "form-group">
+            <h:inputSecret id="password-check" styleClass="form-control" a:placeholder="Confirm password"
+                           value="#{registerRequest.passwordCheck}">
+                <f:validateLength maximum="25" />
+                <f:validator validatorId="passwordValidator" />
+            </h:inputSecret>
+            <h:message errorClass="error-message" for="password-check" />
         </div>
         <h:commandButton styleClass="btn btn-primary" value="Signup" action="#{registerController.register(registerRequest)}"/><br/>
     </h:form>

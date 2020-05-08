@@ -20,7 +20,13 @@ public class RegisterController {
 
     public String register(RegisterRequest registerRequest) {
         logger.info(String.format("Tried to register with username %s and password %s",registerRequest.getUsername(), registerRequest.getPassword()));
-        registerService.register(registerRequest);
-        return "/index.xhtml?faces-redirect=true";
+
+        var registered = registerService.register(registerRequest);
+
+        if (registered) {
+            return "/login.xhtml?faces-redirect=true";
+        }else {
+            return "/register.xhtml?faces-redirect=true";
+        }
     }
 }
