@@ -7,6 +7,7 @@ import pl.jazapp.app.webapp.UserContext;
 import pl.jazapp.app.webapp.UserRepository;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.Optional;
 
@@ -28,19 +29,38 @@ public class LoginService {
         this.userRepository = userRepository;
     }
 
-    void login(LoginRequest loginRequest) {
+    boolean login(LoginRequest loginRequest) {
 
         Optional<User> checkingUser = userRepository.findByUsername(loginRequest.getUsername());
 
         if (checkingUser.isPresent()) {
             User existingCheckingUser = checkingUser.get();
             if (existingCheckingUser.getPassword().equals(loginRequest.getPassword())) {
-                userContext.login();
-
+                userContext.login(loginRequest);
                 logger.warn(String.format("Logged successfully with username: %s, and password: %s", loginRequest.getUsername(), loginRequest.getPassword()));
+                return true;
             } else {
-                logger.warn(String.format("Wrong username or password %s %s", loginRequest.getUsername(), loginRequest.getPassword()));
+                logger.warn(String
+                        .format("Wrong password %s %s",
+                                loginRequest.getUsername(),
+                                loginRequest.getPassword()));
+
+                FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                        .put("error-message", "Wrong username or password");
             }
+        } else {
+            logger.warn(String
+                    .format("Wrong username %s %s",
+                    loginRequest.getUsername(),
+                    loginRequest.getPassword()));
+
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("error-message", "Wrong username or password");
         }
+        return false;
+    }
+
+    void logout () {
+        userContext.logout();
     }
 }

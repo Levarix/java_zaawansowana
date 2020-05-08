@@ -6,8 +6,14 @@
       xmlns:h="http://java.sun.com/jsf/html"
 
 >
+<h:head>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
 <h:body>
     <h:form styleClass="form-base">
+        <h:outputText rendered="#{flash.containsKey('error-message')}" value ="#{flash['error-message']}" />
         <div class = "form-group">
             <h:inputText id="username" styleClass="form-control" a:placeholder="Username"
                          value="#{loginRequest.username}"/>
