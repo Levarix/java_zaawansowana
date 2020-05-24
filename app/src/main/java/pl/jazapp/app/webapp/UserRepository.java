@@ -1,31 +1,46 @@
 package pl.jazapp.app.webapp;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import pl.jazapp.app.webapp.register.RegisterRequest;
+
+import pl.jazapp.app.webapp.users.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;
-
-import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
+
+@FunctionalInterface
+interface DaoRetriever<T> {
+    T retrieve() throws NoResultException;
+}
 
 @ApplicationScoped
 public class UserRepository {
-    private Map<String, User> users = new ConcurrentHashMap<>();
-    private final Logger logger = LoggerFactory.getLogger(UserRepository.class);
 
-    public UserRepository() {
-        users.put("test", new User("test", "rybacki@wp.pl", "Maciej","Testowy", "03/08/1998", "test"));
+    @PersistenceContext
+    private EntityManager em;
+
+    public Optional<UserEntity> findByUsername(String username) {
+        return findOrEmpty(() ->
+                em.createQuery(
+                        "SELECT u from UserEntity u WHERE u.username = :username", UserEntity.class).
+                        setParameter("username", username).getSingleResult());
     }
 
-     public Optional<User> findByUsername(String username) {
-        return Optional.ofNullable(users.get(username));
+    public Optional<UserEntity> findByEmail(String email) {
+        return findOrEmpty(() ->
+                em.createQuery(
+                        "SELECT u from UserEntity u WHERE u.email = :email", UserEntity.class).
+                        setParameter("email", email).getSingleResult());
     }
 
-    public void createUser (RegisterRequest registerRequest) {
-        users.put(registerRequest.getUsername(), new User(registerRequest.getUsername(), registerRequest.getEmail(), registerRequest.getFirstName(), registerRequest.getLastName(), registerRequest.getBirthDate(), registerRequest.getPassword()));
-        logger.info(String.format("Created user with username: %s and password: %s", registerRequest.getUsername(), registerRequest.getPassword()));
+    public static <T> Optional<T> findOrEmpty(final DaoRetriever<T> retriever) {
+        try {
+            return Optional.of(retriever.retrieve());
+        } catch (NoResultException ex) {
+            //log
+        }
+        return Optional.empty();
     }
 }
 

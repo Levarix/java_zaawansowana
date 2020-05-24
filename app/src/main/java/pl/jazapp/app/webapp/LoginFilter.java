@@ -1,6 +1,6 @@
 package pl.jazapp.app.webapp;
 
-import pl.jazapp.app.webapp.UserContext;
+import pl.jazapp.app.webapp.users.UserContext;
 
 import javax.faces.application.ResourceHandler;
 import javax.inject.Inject;

@@ -17,11 +17,17 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
     implementation(
             'javax:javaee-api:8.0',
-            'org.slf4j:slf4j-api:1.7.25'
+            'org.slf4j:slf4j-api:1.7.28',
+            'org.postgresql:postgresql:42.2.8',
+            'org.hibernate:hibernate-core:5.4.6.Final',
+            'org.hibernate:hibernate-hikaricp:5.4.6.Final',
+            'com.zaxxer:HikariCP:3.4.1',
+            'org.liquibase:liquibase-core:3.8.0',
+            'org.liquibase:liquibase-cdi:3.8.0',
+            'org.springframework.security:spring-security-crypto:5.2.0.RELEASE'
     )
 
-
+    testImplementation 'junit:junit:4.12'
 }

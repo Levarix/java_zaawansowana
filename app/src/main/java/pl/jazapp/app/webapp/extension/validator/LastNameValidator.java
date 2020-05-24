@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 @FacesValidator("lastNameValidator")
 public class LastNameValidator implements Validator<String> {
 
-    private final Pattern onlyDialecticLettersPattern = Pattern.compile("[A-ZĄĆĘŁŃÓŚŹ][a-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ]+");
+    private final Pattern onlyDialecticLettersPattern = Pattern.compile("[a-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ]+");
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {

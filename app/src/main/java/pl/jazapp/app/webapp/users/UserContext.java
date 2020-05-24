@@ -1,11 +1,14 @@
-package pl.jazapp.app.webapp;
+package pl.jazapp.app.webapp.users;
 
+import pl.jazapp.app.webapp.User;
+import pl.jazapp.app.webapp.UserRepository;
 import pl.jazapp.app.webapp.login.LoginRequest;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Optional;
 
 
 @SessionScoped
@@ -33,10 +36,13 @@ public class UserContext implements Serializable {
 
     public void login(LoginRequest loginRequest) {
         isLogged = true;
-        User user = userRepository.findByUsername(loginRequest.getUsername()).get();
-        setFullName(user.getFirstName() + " " + user.getLastName());
-    }
+        Optional<UserEntity> user = userRepository.findByUsername(loginRequest.getUsername());
+        if(user.isPresent()){
+            UserEntity existingUser = user.get();
+            setFullName(existingUser.getFirst_name() + " " + existingUser.getLast_name());
+        }
 
+    }
     public void logout (){
         isLogged = false;
     }

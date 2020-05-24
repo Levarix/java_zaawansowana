@@ -25,7 +25,7 @@ public class LoginController {
 
        var logged = loginService.login(loginRequest);
 
-       if (logged == true) {
+       if (logged) {
            return "/index.xhtml?faces-redirect=true";
        } else {
            return "/login.xhtml?faces-redirect=true";

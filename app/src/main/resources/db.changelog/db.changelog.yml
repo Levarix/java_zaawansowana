@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20200524_init
+      author: Maciej Rybacki
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200524_init.sql
