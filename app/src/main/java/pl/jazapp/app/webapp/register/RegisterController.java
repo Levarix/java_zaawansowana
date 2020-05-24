@@ -20,7 +20,6 @@ public class RegisterController {
 
     public String register(RegisterRequest registerRequest) {
         logger.info(String.format("Tried to register with username %s and password %s",registerRequest.getUsername(), registerRequest.getPassword()));
-
         var registered = registerService.register(registerRequest);
 
         if (registered) {

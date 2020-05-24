@@ -16,7 +16,7 @@ public class UserRepository {
     private final Logger logger = LoggerFactory.getLogger(UserRepository.class);
 
     public UserRepository() {
-        users.put("test", new User("test", "rybacki@wp.pl", "Maciej","Testowy", "03/08/1998", "test"));
+        users.put("test", new User("test", "test"));
     }
 
      public Optional<User> findByUsername(String username) {
