@@ -28,14 +28,13 @@ public class AverageServlet extends HttpServlet {
         var writer = resp.getWriter();
 
         try {
-            writer.println("I got '" + numbers + "'");
             for (int i = 0; i < splitedNumbers.length; i++){
                 sum += Double.parseDouble(splitedNumbers[i]);
             }
             avg = sum/splitedNumbers.length;
             writer.println("Average equals: " + df.format(avg));
         } catch (NumberFormatException e) {
-            writer.println("Haven't given any parameter to calculate the average");
+            writer.println("Please put parameters.");
         }
 
     }
