@@ -6,3 +6,17 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: 20200524_init.sql
+  - changeSet:
+      id: 20200605_zad4
+      author: Maciej Rybacki
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200605_zad4.sql
+  - changeSet:
+      id: 20200606_drop_default
+      author: Maciej Rybacki
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200606_drop_default.sql

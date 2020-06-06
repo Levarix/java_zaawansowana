@@ -1,0 +1,1 @@
+ALTER TABLE "auction" ALTER COLUMN version DROP DEFAULT;
