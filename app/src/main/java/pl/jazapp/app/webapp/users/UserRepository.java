@@ -1,7 +1,5 @@
-package pl.jazapp.app.webapp;
+package pl.jazapp.app.webapp.users;
 
-
-import pl.jazapp.app.webapp.users.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

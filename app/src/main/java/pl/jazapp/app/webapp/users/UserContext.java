@@ -1,7 +1,5 @@
 package pl.jazapp.app.webapp.users;
 
-import pl.jazapp.app.webapp.User;
-import pl.jazapp.app.webapp.UserRepository;
 import pl.jazapp.app.webapp.login.LoginRequest;
 
 import javax.enterprise.context.SessionScoped;

@@ -4,9 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.jazapp.app.webapp.User;
 import pl.jazapp.app.webapp.users.UserContext;
-import pl.jazapp.app.webapp.UserRepository;
+import pl.jazapp.app.webapp.users.UserRepository;
 import pl.jazapp.app.webapp.users.UserEntity;
 
 import javax.enterprise.context.RequestScoped;

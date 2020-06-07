@@ -2,7 +2,6 @@ package pl.jazapp.app.webapp.users;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.jazapp.app.webapp.UserRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.context.FacesContext;
