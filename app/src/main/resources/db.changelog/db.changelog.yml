@@ -20,3 +20,10 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: 20200606_drop_default.sql
+  - changeSet:
+      id: 20200618_add_admin_column
+      author: Maciej Rybacki
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200618_add_admin_column.sql
