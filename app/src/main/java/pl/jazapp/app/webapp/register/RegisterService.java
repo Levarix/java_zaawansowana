@@ -31,7 +31,7 @@ public class RegisterService {
         if (registerRequest.getPassword().equals(registerRequest.getPasswordCheck())) {
             Optional<User> checkingUser = userRepository.findByUsername(registerRequest.getUsername());
 
-            if (!checkingUser.isPresent()) {
+            if (checkingUser.isEmpty()) {
                 userRepository.createUser(registerRequest);
                 return true;
             } else {
