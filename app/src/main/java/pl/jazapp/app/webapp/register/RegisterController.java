@@ -40,13 +40,13 @@ public class RegisterController {
             if (registered) {
                 return "/login.xhtml?faces-redirect=true";
             }else {
-                return "/register.xhtml?faces-redirect=true";
+                return "/register.xhtml";
             }
         }
         else {
             FacesContext.getCurrentInstance().getExternalContext().getFlash()
                     .put("error-message", "Passwords do not match");
-            return "/register.xhtml?faces-redirect=true";
+            return "/register.xhtml";
 
         }
     }

@@ -28,6 +28,9 @@ public class UserEntity {
     @Column(name = "last_name")
     private String last_name;
 
+    @Column(name = "role")
+    private String role;
+
     public Long getId() {
         return id;
     }
@@ -83,4 +86,13 @@ public class UserEntity {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
+
