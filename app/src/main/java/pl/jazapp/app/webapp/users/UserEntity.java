@@ -29,7 +29,7 @@ public class UserEntity {
     private String last_name;
 
     @Column(name = "role")
-    private String role;
+    private String role = "DEFAULT";
 
     public Long getId() {
         return id;
