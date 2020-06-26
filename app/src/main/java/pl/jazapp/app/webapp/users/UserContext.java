@@ -1,6 +1,9 @@
 package pl.jazapp.app.webapp.users;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.jazapp.app.webapp.login.LoginRequest;
+import pl.jazapp.app.webapp.login.LoginService;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -12,10 +15,14 @@ import java.util.Optional;
 @SessionScoped
 @Named
 public class UserContext implements Serializable {
+    private final Logger logger = LoggerFactory.getLogger(LoginService.class);
     private static final long serialVersionUID = 1L;
 
-    private boolean isLogged;
+    private Long id;
     private String fullName;
+    private String role = "DEFAULT";
+
+    private boolean isLogged;
 
     @Inject
     UserRepository userRepository;
@@ -32,23 +39,48 @@ public class UserContext implements Serializable {
         return isLogged;
     }
 
+    public boolean isUserRoleAdmin() {
+        return this.role.equals("ADMIN");
+    }
+
     public void login(LoginRequest loginRequest) {
         isLogged = true;
         Optional<UserEntity> user = userRepository.findByUsername(loginRequest.getUsername());
         if(user.isPresent()){
             UserEntity existingUser = user.get();
+            setId(existingUser.getId());
             setFullName(existingUser.getFirst_name() + " " + existingUser.getLast_name());
+            logger.warn(String.format("%s", role));
+            setRole(existingUser.getRole());
+            logger.warn(String.format("%s", role));
         }
 
     }
     public void logout (){
         isLogged = false;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
     public String getFullName() {
         return fullName;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <h:form styleClass="form-base">
+        <div class = "form-group">
+            <h:inputText id="name" styleClass="form-control" a:placeholder="Name"
+                         value="#{categoryController.categoryRequest.name}"/>
+
+            <h:selectOneMenu value="#{categoryController.categoryRequest.departmentId}">
+                <f:selectItems value="#{categoryController.departmentList}" var="dep" itemDescription="departmentId" itemLabel="#{dep.name}" itemValue="#{dep.id}"/>
+            </h:selectOneMenu>
+        </div>
+        <h:inputHidden name="id" value="#{categoryController.categoryRequest.id}"/>
+        <h:commandButton id="save" styleClass="btn btn-primary" value="Save" action="#{categoryController.edit()}"/><br/>
+    </h:form>
+</h:body>
+</html>

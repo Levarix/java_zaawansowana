@@ -1,6 +1,9 @@
 package pl.jazapp.app.webapp.users;
 
+import pl.jazapp.app.webapp.auctions.AuctionEntity;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "public")
@@ -30,6 +33,10 @@ public class UserEntity {
 
     @Column(name = "role")
     private String role = "DEFAULT";
+
+    @OneToMany(mappedBy = "created_by")
+    private List<AuctionEntity> auctionEntities;
+
 
     public Long getId() {
         return id;

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+>
+<h:head>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <h:form styleClass="form-base">
+        <div class = "form-group">
+            <h:inputText id="title" styleClass="form-control" a:placeholder="Title"
+                         value="#{auctionRequest.title}"/>
+
+            <h:inputText id="descritption" styleClass="form-control" a:placeholder="Description"
+                         value="#{auctionRequest.description}"/>
+
+            <h:inputText id="price" styleClass="form-control" a:placeholder="Price"
+                         value="#{auctionRequest.price}"/>
+
+            <h:inputText id="photo-link-1" styleClass="form-control" a:placeholder="Photo Link"
+                         value="#{categoryRequest.name}"/>
+
+            <h:inputText id="photo-link-2" styleClass="form-control" a:placeholder="Photo Link"
+                         value="#{categoryRequest.name}"/>
+
+            <h:inputText id="photo-link-3" styleClass="form-control" a:placeholder="Photo Link"
+                         value="#{categoryRequest.name}"/>
+
+            <h:inputText id="param1-name" styleClass="form-control" a:placeholder="Parameter Name"
+            value="#{categoryRequest.name}"/>
+
+            <h:inputText id="param2-name" styleClass="form-control" a:placeholder="Parameter Name"
+                         value="#{categoryRequest.name}"/>
+
+            <h:inputText id="param3-name" styleClass="form-control" a:placeholder="Parameter Name"
+                         value="#{categoryRequest.name}"/>
+
+            <h:inputText id="param1-value" styleClass="form-control" a:placeholder="Parameter Value"
+                         value="#{categoryRequest.name}"/>
+
+            <h:inputText id="param2-value" styleClass="form-control" a:placeholder="Parameter Value"
+                         value="#{categoryRequest.name}"/>
+
+            <h:inputText id="param3-value" styleClass="form-control" a:placeholder="Parameter Value"
+                         value="#{categoryRequest.name}"/>
+
+
+            <select id="category" name="category">
+                <ui:repeat value="#{categoryController.categoryList}" var="dep">
+                    <option value="#{auctionRequest.category_id}">#{dep.name}</option>
+                </ui:repeat>
+            </select>
+
+        </div>
+
+        <h:commandButton id="save" styleClass="btn btn-primary" value="Save" action="#{auctionController.edit(auctionRequest)}"/><br/>
+    </h:form>
+</h:body>
+</html>

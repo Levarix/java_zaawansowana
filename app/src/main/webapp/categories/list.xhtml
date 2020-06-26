@@ -2,18 +2,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f = "http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
 >
 <h:head>
     <h:outputStylesheet name="bootstrap.min.css" library="css"/>
     <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
+
 <h:body>
-    <h:form styleClass="form-base">
-        <div class = "form-group">
-            <h2>Hi from Auction List!</h2>
-        </div>
-    </h:form>
+    <c:forEach items="#{categoryController.categoryList}" var="entry">
+        <li><h:link id="category-#{entry.id}" outcome="edit?categoryId=#{entry.id}" value="#{entry.departmentEntity.name}-#{entry.name}" /></li>
+    </c:forEach>
 </h:body>
 </html>

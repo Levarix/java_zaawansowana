@@ -2,18 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 <h:head>
     <h:outputStylesheet name="bootstrap.min.css" library="css"/>
     <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
+
 <h:body>
     <h:form styleClass="form-base">
         <div class = "form-group">
-            <h2>Hi from Auction List!</h2>
+            <h:inputText id="name" styleClass="form-control" a:placeholder="Name"
+                         value="#{departmentRequest.name}"/>
         </div>
+
+        <h:commandButton id="save" styleClass="btn btn-primary" value="Save" action="#{departmentController.edit(departmentRequest)}"/><br/>
     </h:form>
 </h:body>
 </html>
