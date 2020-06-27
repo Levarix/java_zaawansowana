@@ -22,7 +22,11 @@ public class UserContext implements Serializable {
     private String fullName;
     private String role = "DEFAULT";
 
-    private boolean isLogged;
+    private Boolean isAdmin = false;
+
+    private UserEntity userEntity;
+
+    private boolean isLogged = false;
 
     @Inject
     UserRepository userRepository;
@@ -34,13 +38,17 @@ public class UserContext implements Serializable {
         this.isLogged = isLogged;
     }
 
-    public boolean isLogged() {
-
-        return isLogged;
-    }
 
     public boolean isUserRoleAdmin() {
         return this.role.equals("ADMIN");
+    }
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(String role) {
+        isAdmin = (role.equals("ADMIN"));
     }
 
     public void login(LoginRequest loginRequest) {
@@ -52,7 +60,9 @@ public class UserContext implements Serializable {
             setFullName(existingUser.getFirst_name() + " " + existingUser.getLast_name());
             logger.warn(String.format("%s", role));
             setRole(existingUser.getRole());
+            setIsAdmin(existingUser.getRole());
             logger.warn(String.format("%s", role));
+            setUserEntity(existingUser);
         }
 
     }
@@ -82,5 +92,22 @@ public class UserContext implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean getIsLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 }

@@ -2,65 +2,82 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-
+      xmlns:c="http://java.sun.com/jsf/core"
 >
 <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <h:outputStylesheet name="bootstrap.min.css" library="css"/>
     <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
 
 <h:body>
-    <h:form styleClass="form-base">
-        <div class = "form-group">
-            <h:inputText id="title" styleClass="form-control" a:placeholder="Title"
-                         value="#{auctionRequest.title}"/>
+    <div id="page">
+        <ui:param name="title" value="Edit auction" />
+            <div class="text-center">
+                <h:outputLabel rendered="#{flash.containsKey('error-message')}"
+                               styleClass="alert alert-danger" value="#{flash['error-message']}" />
+                <h:form styleClass="form-base"
+                        enctype="application/x-www-form-urlencoded">
+                    <h:messages showDetail="false" />
+                    <h:inputHidden value="#{auctionController.auctionRequest.id}" />
 
-            <h:inputText id="descritption" styleClass="form-control" a:placeholder="Description"
-                         value="#{auctionRequest.description}"/>
+                    <div class="form-group">
+                        <h:message for="auction-category" />
+                        <h:selectOneMenu id="auction-category" styleClass="form-control"
+                                         value="#{auctionController.auctionRequest.category_id}"
+                                         required="true">
+                            <f:selectItems value="#{auctionController.categoryList}" var="it"
+                                           itemLabel="#{it.name}" itemValue="#{it.id}" />
+                        </h:selectOneMenu>
+                    </div>
+                    <div class="form-group">
+                        <h:message for="auction-name" />
+                        <h:inputText id="auction-name" styleClass="form-control"
+                                     a:placeholder="Auction name"
+                                     value="#{auctionController.auctionRequest.title}" required="true">
+                            <c:validateLength maximum="90" />
+                        </h:inputText>
+                    </div>
 
-            <h:inputText id="price" styleClass="form-control" a:placeholder="Price"
-                         value="#{auctionRequest.price}"/>
+                    <div class="form-group">
+                        <h:message for="description" />
+                        <h:inputText id="description" styleClass="form-control"
+                                     a:placeholder="Description"
+                                     value="#{auctionController.auctionRequest.description}" />
+                    </div>
 
-            <h:inputText id="photo-link-1" styleClass="form-control" a:placeholder="Photo Link"
-                         value="#{categoryRequest.name}"/>
+                    <div class="form-group">
+                        <h:message for="price" />
+                        <h:inputText id="price" styleClass="form-control"
+                                     a:placeholder="Price"
+                                     value="#{auctionController.auctionRequest.price}" required="true">
+                        </h:inputText>
+                    </div>
 
-            <h:inputText id="photo-link-2" styleClass="form-control" a:placeholder="Photo Link"
-                         value="#{categoryRequest.name}"/>
+                    <div class="form-group">
 
-            <h:inputText id="photo-link-3" styleClass="form-control" a:placeholder="Photo Link"
-                         value="#{categoryRequest.name}"/>
+                        <h:inputText id="image-1" styleClass="form-control" a:placeholder="Image URL"
+                                     value="#{auctionController.auctionRequest.photoUrl1}"/>
+                        <h:inputText id="image-2" styleClass="form-control" a:placeholder="Image URL"
+                                     value="#{auctionController.auctionRequest.photoUrl2}"/>
+                        <h:inputText id="image-3" styleClass="form-control" a:placeholder="Image URL"
+                                     value="#{auctionController.auctionRequest.photoUrl3}"/>
+                    </div>
 
-            <h:inputText id="param1-name" styleClass="form-control" a:placeholder="Parameter Name"
-            value="#{categoryRequest.name}"/>
-
-            <h:inputText id="param2-name" styleClass="form-control" a:placeholder="Parameter Name"
-                         value="#{categoryRequest.name}"/>
-
-            <h:inputText id="param3-name" styleClass="form-control" a:placeholder="Parameter Name"
-                         value="#{categoryRequest.name}"/>
-
-            <h:inputText id="param1-value" styleClass="form-control" a:placeholder="Parameter Value"
-                         value="#{categoryRequest.name}"/>
-
-            <h:inputText id="param2-value" styleClass="form-control" a:placeholder="Parameter Value"
-                         value="#{categoryRequest.name}"/>
-
-            <h:inputText id="param3-value" styleClass="form-control" a:placeholder="Parameter Value"
-                         value="#{categoryRequest.name}"/>
-
-
-            <select id="category" name="category">
-                <ui:repeat value="#{categoryController.categoryList}" var="dep">
-                    <option value="#{auctionRequest.category_id}">#{dep.name}</option>
-                </ui:repeat>
-            </select>
-
-        </div>
-
-        <h:commandButton id="save" styleClass="btn btn-primary" value="Save" action="#{auctionController.edit(auctionRequest)}"/><br/>
-    </h:form>
+                    <h:commandButton styleClass="btn btn-primary" value="Save"
+                                     action="#{auctionController.edit}" />
+                    &nbsp;&nbsp;
+                    <h:link styleClass="btn btn-primary" value="My Auctions"
+                            outcome="mine" />
+                    <br />
+                </h:form>
+            </div>
+    </div>
 </h:body>
 </html>

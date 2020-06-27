@@ -1,0 +1,1 @@
+ALTER TABLE "auction_photo" DROP CONSTRAINT auction_photo_auction_id_url_key;

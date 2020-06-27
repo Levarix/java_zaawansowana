@@ -51,7 +51,7 @@ public class SecurityFilter extends HttpFilter {
     }
 
     private boolean isUserLogged() {
-        return userContext.isLogged();
+        return userContext.getIsLogged();
     }
 
     private boolean isUserRoleAdmin() {

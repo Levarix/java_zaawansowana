@@ -1,4 +1,6 @@
-package pl.jazapp.app.webapp.auctions;
+package pl.jazapp.app.webapp.auctions.photos;
+
+import pl.jazapp.app.webapp.auctions.AuctionEntity;
 
 import javax.persistence.*;
 
@@ -16,6 +18,19 @@ public class AuctionPhotoEntity {
 
     @Column(name = "url")
     private String url;
+
+    @Column(name = "orderId")
+    private Long orderId;
+
+    public AuctionPhotoEntity(Long id, AuctionEntity auctionEntity, String url, Long orderId) {
+        this.id = id;
+        this.auctionEntity = auctionEntity;
+        this.url = url;
+        this.orderId = orderId;
+    }
+
+    public AuctionPhotoEntity() {
+    }
 
     public Long getId() {
         return id;
@@ -39,5 +54,21 @@ public class AuctionPhotoEntity {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public AuctionEntity getAuctionEntity() {
+        return auctionEntity;
+    }
+
+    public void setAuctionEntity(AuctionEntity auctionEntity) {
+        this.auctionEntity = auctionEntity;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }

@@ -1,5 +1,7 @@
-package pl.jazapp.app.webapp.categories;
+package pl.jazapp.app.webapp.categories.services;
 
+import pl.jazapp.app.webapp.categories.CategoryEntity;
+import pl.jazapp.app.webapp.categories.CategoryRepository;
 import pl.jazapp.app.webapp.departments.DepartmentEntity;
 import pl.jazapp.app.webapp.departments.DepartmentRepository;
 

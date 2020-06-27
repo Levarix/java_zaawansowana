@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.parameters;
+package pl.jazapp.app.webapp.auctions.parameters;
 
 import javax.persistence.*;
 
@@ -13,4 +13,5 @@ public class ParameterEntity {
 
     @Column(name="key")
     private String key;
+
 }

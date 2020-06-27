@@ -23,7 +23,10 @@
             <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
                          value="#{loginRequest.password}"/>
         </div>
-        <h:commandButton styleClass="btn btn-primary" value="Login" action="#{loginController.login(loginRequest)}"/><br/>
+        <h:commandButton styleClass="btn btn-primary" value="Login" action="#{loginController.login(loginRequest)}"/>
+        &nbsp;
+        <h:link styleClass="btn btn-primary" value="All Auctions" outcome="index" />
+        <br/>
         <h:outputLink styleClass="small" value="register.xhtml">Signup</h:outputLink>
     </h:form>
 </h:body>

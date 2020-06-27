@@ -1,6 +1,7 @@
 package pl.jazapp.app.webapp.categories;
 
 
+import pl.jazapp.app.webapp.categories.services.SaveCategoryService;
 import pl.jazapp.app.webapp.departments.DepartmentEntity;
 import pl.jazapp.app.webapp.departments.DepartmentRepository;
 
@@ -8,11 +9,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RequestScoped
 @Named
@@ -27,8 +26,6 @@ public class CategoryController {
     @Inject
     SaveCategoryService saveCategoryService;
 
-    @Inject
-    EditCategoryService editCategoryService;
 
     public List<CategoryEntity> getCategoryList() {
         return categoryRepository.getAll();

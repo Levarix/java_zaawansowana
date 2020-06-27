@@ -9,6 +9,13 @@ body {
     margin: auto;
 }
 
+.auction-list {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
 .error-message {
     color: red;
     font-size: 12px;

@@ -1,11 +1,10 @@
 package pl.jazapp.app.webapp.auctions;
 
+import pl.jazapp.app.webapp.auctions.photos.AuctionPhotoEntity;
 import pl.jazapp.app.webapp.categories.CategoryEntity;
 import pl.jazapp.app.webapp.users.UserEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -27,7 +26,7 @@ public class AuctionEntity {
     private double price = 0.0;
 
     @Column(name = "version")
-    private int version;
+    private int version = 1;
 
     @ManyToOne
     @JoinColumn(name = "created_by")
@@ -40,10 +39,12 @@ public class AuctionEntity {
     @OneToMany(
             fetch = FetchType.EAGER,
             mappedBy = "auctionEntity",
-            cascade = {CascadeType.MERGE, CascadeType.REMOVE},
+            cascade = {CascadeType.ALL},
             orphanRemoval = true
     )
+    @OrderColumn(name = "orderId")
     private List<AuctionPhotoEntity> auctionPhotoList;
+
 
     public Long getId() {
         return id;

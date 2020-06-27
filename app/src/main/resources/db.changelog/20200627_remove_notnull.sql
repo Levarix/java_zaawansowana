@@ -1,0 +1,1 @@
+ALTER TABLE "auction_photo" ALTER COLUMN url DROP NOT NULL;

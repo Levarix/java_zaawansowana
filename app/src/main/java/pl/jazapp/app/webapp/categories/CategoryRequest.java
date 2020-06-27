@@ -22,6 +22,14 @@ public class CategoryRequest {
     public CategoryRequest() {
     }
 
+    public CategoryEntity categoryEntity() {
+        var categoryEntity = new CategoryEntity();
+        categoryEntity.setId(id);
+        categoryEntity.setName(name);
+
+        return categoryEntity;
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,11 +53,4 @@ public class CategoryRequest {
         this.departmentId = departmentId;
     }
 
-    public CategoryEntity categoryEntity() {
-        var categoryEntity = new CategoryEntity();
-        categoryEntity.setId(id);
-        categoryEntity.setName(name);
-
-        return categoryEntity;
-    }
 }

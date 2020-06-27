@@ -1,37 +1,33 @@
-package pl.jazapp.app.webapp.categories;
+package pl.jazapp.app.webapp.departments.services;
 
 import pl.jazapp.app.webapp.departments.DepartmentEntity;
 import pl.jazapp.app.webapp.departments.DepartmentRepository;
+import pl.jazapp.app.webapp.users.UserEntity;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @RequestScoped
-public class EditCategoryService {
-
+public class EditDepartmentService {
 
     @PersistenceContext
     private EntityManager em;
 
     @Inject
-    CategoryRepository categoryRepository;
+    DepartmentRepository departmentRepository;
 
     @Transactional
-    public boolean editCategory(Long categoryId,  String name, Long departmentId) {
+    public boolean editDepartment(Long departmentId,  String name) {
 
-        CategoryEntity categoryEntity = em.find(CategoryEntity.class ,categoryId);
         DepartmentEntity departmentEntity = em.find(DepartmentEntity.class ,departmentId);
 
         em.getTransaction().begin();
-
-        categoryEntity.setName(name);
-        categoryEntity.setDepartmentEntity(departmentEntity);
-
+        departmentEntity.setName(name);
         em.getTransaction().commit();
-
         return true;
     }
 }

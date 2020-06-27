@@ -4,16 +4,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 <h:head>
     <h:outputStylesheet name="bootstrap.min.css" library="css"/>
     <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
 <h:body>
-    <h:form styleClass="form-base">
+    <h:form styleClass="form-base" rendered="#{userContext.isAdmin}">
         <div class = "form-group">
-            <h2>Hi from Auction List!</h2>
+            <h2>Hi Admin!</h2>
         </div>
+        <h:link styleClass="btn btn-secondary" role="button" value="Departments" outcome="departments/list" />
+        &nbsp;
+        <h:link styleClass="btn btn-secondary" role="button" value="Categories" outcome="categories/list" /><br/>
+    </h:form>
+
+    <h:form styleClass="form-base" rendered="#{userContext.isLogged}">
+        <h:link styleClass="btn btn-primary" value="My Auctions" outcome="auctions/mine" />
+        &nbsp;
+        <h:commandButton styleClass="btn btn-primary" value="Logout" action="#{loginController.logout()}"/><br/>
+    </h:form>
+
+    <h:form styleClass="form-base" rendered="#{userContext.isLogged eq false}">
+        <h:link styleClass="btn btn-primary" value="Login" outcome="login" />
+    </h:form>
+
+    <h:form styleClass="form-base">
+        <h2>Auction List</h2>
+        <div class="list-group">
+        <ui:repeat value="#{auctionController.auctionList}" var="auction"
+                   styleClass="container">
+            <div class="row">
+                <div>
+                    <h:form styleClass="list-group-item list-group-item-action">
+                        <f:param name="auctionId" value="#{auction.id}" />
+                        <h:graphicImage value="#{auction.auctionPhotoList[0].url}" height="64" />
+                        <h:outputText
+                                value="##{auction.id} #{auction.title} - #{auction.price}" />
+                    </h:form>
+                </div>
+
+            </div>
+        </ui:repeat>
+    </div>
     </h:form>
 </h:body>
 </html>

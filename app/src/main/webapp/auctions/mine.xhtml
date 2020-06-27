@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <ui:param name="title" value="Auction list" />
+        <div class="auction-list">
+            <h:messages showDetail="false" />
+            <div class="list-group">
+                <ui:repeat value="#{auctionController.userAuctionList}" var="auction"
+                           styleClass="container">
+                    <div class="row">
+                        <div>
+                            <h:form>
+                                <h:link styleClass="list-group-item list-group-item-action"
+                                        outcome="edit">
+                                    <f:param name="auctionId" value="#{auction.id}" />
+                                    <h:graphicImage value="#{auction.auctionPhotoList[0].url}" height="64" />
+                                    <h:outputText
+                                            value="##{auction.id} #{auction.title} - #{auction.price}" />
+                                    &nbsp;
+                                    <h:commandLink value="Remove" styleClass="btn btn-danger"
+                                                   action="#{auctionController.remove(auction)}" />
+                                </h:link>
+                            </h:form>
+                        </div>
+
+                    </div>
+                </ui:repeat>
+            </div>
+            <br/>
+            <h:link styleClass="btn btn-primary" value="Add New"
+                    outcome="edit" />
+            &nbsp;
+            <h:link styleClass="btn btn-primary" value="All Auctions"
+                    outcome="/index" />
+        </div>
+</h:body>
+</html>

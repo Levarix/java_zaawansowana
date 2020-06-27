@@ -1,5 +1,7 @@
-package pl.jazapp.app.webapp.departments;
+package pl.jazapp.app.webapp.departments.services;
 
+import pl.jazapp.app.webapp.departments.DepartmentEntity;
+import pl.jazapp.app.webapp.departments.DepartmentRepository;
 import pl.jazapp.app.webapp.users.UserEntity;
 import pl.jazapp.app.webapp.users.UserRepository;
 

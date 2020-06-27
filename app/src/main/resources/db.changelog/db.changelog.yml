@@ -34,3 +34,32 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: 20200622_change_admin_column.sql
+  - changeSet:
+      id: 20200627_add_orderid_column
+      author: Maciej Rybacki
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200627_add_orderid_column.sql
+  - changeSet:
+      id: 20200627_remove_notnull
+      author: Maciej Rybacki
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200627_remove_notnull.sql
+  - changeSet:
+      id: 20200627_remove_constraint
+      author: Maciej Rybacki
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200627_remove_constraint.sql
+
+
+
+
+
+
+
+
