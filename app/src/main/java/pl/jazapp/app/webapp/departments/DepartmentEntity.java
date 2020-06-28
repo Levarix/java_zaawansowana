@@ -1,7 +1,6 @@
 package pl.jazapp.app.webapp.departments;
 
 import pl.jazapp.app.webapp.categories.CategoryEntity;
-import CategoryRepository;
 
 import javax.persistence.*;
 import java.util.List;
