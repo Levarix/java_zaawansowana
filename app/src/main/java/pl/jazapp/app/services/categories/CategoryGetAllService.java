@@ -1,7 +1,7 @@
 package pl.jazapp.app.services.categories;
 
+import pl.jazapp.app.repositories.CategoryRepository;
 import pl.jazapp.app.webapp.categories.CategoryEntity;
-import CategoryRepository;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
