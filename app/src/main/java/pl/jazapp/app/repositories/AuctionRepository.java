@@ -30,7 +30,7 @@ public class AuctionRepository {
 
     public void removeAuction(AuctionEntity _auctionEntity) {
         AuctionEntity auctionEntity = findById(_auctionEntity.getId());
-        em.remove(em.merge(_auctionEntity));
+        em.remove(auctionEntity);
     }
 
     public AuctionEntity findById(Long auctionId) {

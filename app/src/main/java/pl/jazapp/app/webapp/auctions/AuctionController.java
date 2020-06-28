@@ -124,11 +124,4 @@ public class AuctionController {
 
         return"/auctions/mine.xhtml?faces-redirect=true";
     }
-
-    @Transactional
-    public String removePhoto(AuctionPhotoEntity auctionPhotoEntity){
-        auctionPhotoRepository.removePhoto(auctionPhotoEntity);
-
-        return"/auctions/mine.xhtml?faces-redirect=true";
-    }
 }
