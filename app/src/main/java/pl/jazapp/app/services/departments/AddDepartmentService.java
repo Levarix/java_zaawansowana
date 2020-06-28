@@ -1,12 +1,9 @@
-package pl.jazapp.app.webapp.departments.services;
+package pl.jazapp.app.services.departments;
 
 import pl.jazapp.app.webapp.departments.DepartmentEntity;
-import pl.jazapp.app.webapp.departments.DepartmentRepository;
-import pl.jazapp.app.webapp.users.UserEntity;
-import pl.jazapp.app.webapp.users.UserRepository;
+import pl.jazapp.app.repositories.DepartmentRepository;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

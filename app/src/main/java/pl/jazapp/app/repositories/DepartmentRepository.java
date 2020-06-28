@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.categories;
+package pl.jazapp.app.repositories;
 
 import pl.jazapp.app.webapp.departments.DepartmentEntity;
 
@@ -7,31 +7,30 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
-public class CategoryRepository {
+public class DepartmentRepository {
 
     @PersistenceContext
     private EntityManager em;
 
-    public Optional<CategoryEntity> findByName(String name) {
+    public Optional<DepartmentEntity> findByName(String name) {
         return findOrEmpty(() ->
                 em.createQuery(
-                        "SELECT d from CategoryEntity d WHERE d.name = :name",CategoryEntity.class).
+                        "SELECT d from DepartmentEntity d WHERE d.name = :name",DepartmentEntity.class).
                         setParameter("name", name).getSingleResult());
     }
 
-    public CategoryEntity findById(Long departmentId) {
-        return em.find(CategoryEntity.class, departmentId);
+    public Optional<DepartmentEntity> findById(Long departmentId) {
+        return Optional.ofNullable(em.find(DepartmentEntity.class, departmentId));
     }
 
-    public ArrayList<CategoryEntity> getAll() {
-        TypedQuery<CategoryEntity> getAllQuery = em.createQuery("SELECT d FROM CategoryEntity d", CategoryEntity.class);
-        return ((ArrayList<CategoryEntity>) getAllQuery.getResultList());
+    public List<DepartmentEntity> getAll() {
+        TypedQuery<DepartmentEntity> getAllQuery = em.createQuery("SELECT d FROM DepartmentEntity d", DepartmentEntity.class);
+        return getAllQuery.getResultList();
     }
-
 
     public static <T> Optional<T> findOrEmpty(final pl.jazapp.app.webapp.DaoRetriever<T> retriever) {
         try {
@@ -41,5 +40,4 @@ public class CategoryRepository {
         }
         return Optional.empty();
     }
-
 }

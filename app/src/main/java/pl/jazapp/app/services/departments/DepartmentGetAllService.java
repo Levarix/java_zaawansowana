@@ -1,8 +1,8 @@
-package pl.jazapp.app.webapp.departments.services;
+package pl.jazapp.app.services.departments;
 
 
 import pl.jazapp.app.webapp.departments.DepartmentEntity;
-import pl.jazapp.app.webapp.departments.DepartmentRepository;
+import pl.jazapp.app.repositories.DepartmentRepository;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

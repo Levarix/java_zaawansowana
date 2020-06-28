@@ -1,7 +1,6 @@
-package pl.jazapp.app.webapp.auctions;
+package pl.jazapp.app.services.categories;
 
 import pl.jazapp.app.webapp.categories.CategoryEntity;
-import pl.jazapp.app.webapp.departments.DepartmentEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -9,17 +8,17 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @ApplicationScoped
-public class SaveAuctionService {
+public class SaveCategoryService {
 
     @PersistenceContext
     EntityManager em;
 
     @Transactional
-    public void save(AuctionEntity auctionEntity) {
-        if(auctionEntity.getId() == null) {
-            em.persist(auctionEntity);
+    public void save(CategoryEntity categoryEntity) {
+        if(categoryEntity.getId() == null) {
+            em.persist(categoryEntity);
         } else {
-            em.merge(auctionEntity);
+            em.merge(categoryEntity);
         }
     }
 }

@@ -2,9 +2,10 @@ package pl.jazapp.app.webapp.departments;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.jazapp.app.webapp.departments.services.AddDepartmentService;
-import pl.jazapp.app.webapp.departments.services.DepartmentGetAllService;
-import pl.jazapp.app.webapp.departments.services.EditDepartmentService;
+import pl.jazapp.app.repositories.DepartmentRepository;
+import pl.jazapp.app.services.departments.AddDepartmentService;
+import pl.jazapp.app.services.departments.DepartmentGetAllService;
+import pl.jazapp.app.services.departments.EditDepartmentService;
 import pl.jazapp.app.webapp.login.LoginService;
 
 import javax.enterprise.context.RequestScoped;

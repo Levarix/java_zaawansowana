@@ -1,9 +1,13 @@
 package pl.jazapp.app.webapp.auctions;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pl.jazapp.app.services.auctions.SaveAuctionService;
 import pl.jazapp.app.webapp.auctions.photos.AuctionPhotoEntity;
 import pl.jazapp.app.webapp.auctions.photos.AuctionPhotoRepository;
 import pl.jazapp.app.webapp.categories.CategoryEntity;
-import pl.jazapp.app.webapp.categories.CategoryRepository;
+import CategoryRepository;
+import pl.jazapp.app.webapp.login.LoginService;
 import pl.jazapp.app.webapp.users.UserContext;
 
 import javax.enterprise.context.RequestScoped;
@@ -41,6 +45,8 @@ public class AuctionController {
     @PersistenceContext
     private EntityManager em;
 
+    private final Logger logger = LoggerFactory.getLogger(LoginService.class);
+
     private AuctionRequest auctionRequest;
 
     public List<CategoryEntity> getCategoryList() {
@@ -73,6 +79,16 @@ public class AuctionController {
 
     @Transactional
     public String edit() {
+        if(auctionRequest.getId() != null){
+            var checkingAuction = auctionRepository.findById(auctionRequest.getId());
+            if(checkingAuction != null) {
+                if(!userContext.getId().equals(checkingAuction.getCreated_by().getId())){
+                    logger.warn("Not your auction!");
+                    return "/auctions/edit.xhtml";
+                }
+            }
+        }
+
 
         var categoryEntity = categoryRepository.findById(auctionRequest.getCategory_id());
         var auctionEntity = auctionRequest.auctionEntity();
