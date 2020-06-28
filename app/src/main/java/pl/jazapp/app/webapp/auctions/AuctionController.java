@@ -120,6 +120,15 @@ public class AuctionController {
 
     @Transactional
     public String remove(AuctionEntity auctionEntity){
+        if(auctionRequest.getId() != null){
+            var checkingAuction = auctionRepository.findById(auctionRequest.getId());
+            if(checkingAuction != null) {
+                if(!userContext.getId().equals(checkingAuction.getCreated_by().getId())){
+                    logger.warn("Not your auction!");
+                    return "/auctions/edit.xhtml";
+                }
+            }
+        }
         auctionRepository.removeAuction(auctionEntity);
 
         return"/auctions/mine.xhtml?faces-redirect=true";
