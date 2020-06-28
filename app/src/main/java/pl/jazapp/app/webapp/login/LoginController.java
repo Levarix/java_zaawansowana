@@ -2,10 +2,10 @@ package pl.jazapp.app.webapp.login;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.jazapp.app.services.login.LoginService;
 
 import javax.enterprise.context.RequestScoped;
 
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 

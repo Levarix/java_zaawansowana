@@ -1,16 +1,13 @@
-package pl.jazapp.app.webapp.users;
+package pl.jazapp.app.repositories;
 
+
+import pl.jazapp.app.webapp.users.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.util.Optional;
-
-@FunctionalInterface
-interface DaoRetriever<T> {
-    T retrieve() throws NoResultException;
-}
 
 @ApplicationScoped
 public class UserRepository {
@@ -32,7 +29,7 @@ public class UserRepository {
                         setParameter("email", email).getSingleResult());
     }
 
-    public static <T> Optional<T> findOrEmpty(final DaoRetriever<T> retriever) {
+    public static <T> Optional<T> findOrEmpty(final pl.jazapp.app.webapp.DaoRetriever<T> retriever) {
         try {
             return Optional.of(retriever.retrieve());
         } catch (NoResultException ex) {

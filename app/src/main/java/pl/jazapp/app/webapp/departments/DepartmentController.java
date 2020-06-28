@@ -6,7 +6,7 @@ import pl.jazapp.app.repositories.DepartmentRepository;
 import pl.jazapp.app.services.departments.AddDepartmentService;
 import pl.jazapp.app.services.departments.DepartmentGetAllService;
 import pl.jazapp.app.services.departments.EditDepartmentService;
-import pl.jazapp.app.webapp.login.LoginService;
+import pl.jazapp.app.services.login.LoginService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;

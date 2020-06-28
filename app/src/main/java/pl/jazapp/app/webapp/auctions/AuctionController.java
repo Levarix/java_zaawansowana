@@ -8,7 +8,7 @@ import pl.jazapp.app.services.auctions.SaveAuctionService;
 import pl.jazapp.app.webapp.auctions.photos.AuctionPhotoEntity;
 import pl.jazapp.app.repositories.AuctionPhotoRepository;
 import pl.jazapp.app.webapp.categories.CategoryEntity;
-import pl.jazapp.app.webapp.login.LoginService;
+import pl.jazapp.app.services.login.LoginService;
 import pl.jazapp.app.webapp.users.UserContext;
 
 import javax.enterprise.context.RequestScoped;
