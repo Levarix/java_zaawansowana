@@ -28,8 +28,8 @@
                     <h:inputHidden value="#{auctionController.auctionRequest.id}" />
 
                     <div class="form-group">
-                        <h:message for="auction-category" />
-                        <h:selectOneMenu id="auction-category" styleClass="form-control"
+                        <h:message for="category" />
+                        <h:selectOneMenu id="category" styleClass="form-control"
                                          value="#{auctionController.auctionRequest.category_id}"
                                          required="true">
                             <f:selectItems value="#{auctionController.categoryList}" var="it"
@@ -37,8 +37,8 @@
                         </h:selectOneMenu>
                     </div>
                     <div class="form-group">
-                        <h:message for="auction-name" />
-                        <h:inputText id="auction-name" styleClass="form-control"
+                        <h:message for="title" />
+                        <h:inputText id="title" styleClass="form-control"
                                      a:placeholder="Auction name"
                                      value="#{auctionController.auctionRequest.title}" required="true">
                             <c:validateLength maximum="90" />
@@ -62,11 +62,11 @@
 
                     <div class="form-group">
 
-                        <h:inputText id="image-1" styleClass="form-control" a:placeholder="Image URL"
+                        <h:inputText id="photo-link-1" styleClass="form-control" a:placeholder="Image URL"
                                      value="#{auctionController.auctionRequest.photoUrl1}"/>
-                        <h:inputText id="image-2" styleClass="form-control" a:placeholder="Image URL"
+                        <h:inputText id="photo-link-2" styleClass="form-control" a:placeholder="Image URL"
                                      value="#{auctionController.auctionRequest.photoUrl2}"/>
-                        <h:inputText id="image-3" styleClass="form-control" a:placeholder="Image URL"
+                        <h:inputText id="photo-link-3" styleClass="form-control" a:placeholder="Image URL"
                                      value="#{auctionController.auctionRequest.photoUrl3}"/>
                     </div>
 

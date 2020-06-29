@@ -41,11 +41,13 @@
                         <div>
                             <h:form>
                                 <div class="list-group-item list-group-item-action">
-                                    <f:param name="auctionId" value="#{auction.id}" />
-                                    <h:graphicImage value="#{auction.auctionPhotoList[0].url}" height="64" />
-                                    <h:outputText
-                                            value="##{auction.id} #{auction.title} - #{auction.price}" />
+                                    <f:param name="auctionId" value="##{auction.id}" />
+                                    <h:graphicImage id="photo-#{auction.auctionPhotoList[0].id}" value="#{auction.auctionPhotoList[0].url}" height="64" />&nbsp;
+                                    <h:outputText  value="#{auction.id}"/>&nbsp;
+                                    <h:outputText id="title-#{auction.id}"  value="#{auction.title}"/>
+
                                 </div>
+
                             </h:form>
                         </div>
 
