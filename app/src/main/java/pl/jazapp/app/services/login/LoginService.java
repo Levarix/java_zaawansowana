@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.jazapp.app.webapp.login.LoginRequest;
 import pl.jazapp.app.webapp.users.UserContext;
 import pl.jazapp.app.repositories.UserRepository;
-import pl.jazapp.app.webapp.users.UserEntity;
+import pl.jazapp.app.entities.UserEntity;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;

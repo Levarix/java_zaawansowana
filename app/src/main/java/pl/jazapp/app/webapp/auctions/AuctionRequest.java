@@ -1,12 +1,10 @@
 package pl.jazapp.app.webapp.auctions;
 
-import pl.jazapp.app.webapp.auctions.photos.AuctionPhotoEntity;
-import pl.jazapp.app.webapp.categories.CategoryEntity;
-import pl.jazapp.app.webapp.users.UserEntity;
+import pl.jazapp.app.entities.AuctionEntity;
+import pl.jazapp.app.entities.AuctionPhotoEntity;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import javax.xml.transform.sax.SAXResult;
 import java.util.List;
 
 @RequestScoped

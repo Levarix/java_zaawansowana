@@ -1,7 +1,5 @@
-package pl.jazapp.app.webapp.categories;
+package pl.jazapp.app.entities;
 
-import pl.jazapp.app.webapp.auctions.AuctionEntity;
-import pl.jazapp.app.webapp.departments.DepartmentEntity;
 import javax.persistence.*;
 
 @Entity

@@ -1,9 +1,10 @@
 package pl.jazapp.app.webapp.categories;
 
 
+import pl.jazapp.app.entities.CategoryEntity;
 import pl.jazapp.app.repositories.CategoryRepository;
 import pl.jazapp.app.services.categories.SaveCategoryService;
-import pl.jazapp.app.webapp.departments.DepartmentEntity;
+import pl.jazapp.app.entities.DepartmentEntity;
 import pl.jazapp.app.repositories.DepartmentRepository;
 
 import javax.enterprise.context.RequestScoped;

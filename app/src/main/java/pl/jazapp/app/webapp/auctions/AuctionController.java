@@ -2,12 +2,13 @@ package pl.jazapp.app.webapp.auctions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.jazapp.app.entities.AuctionEntity;
 import pl.jazapp.app.repositories.AuctionRepository;
 import pl.jazapp.app.repositories.CategoryRepository;
 import pl.jazapp.app.services.auctions.SaveAuctionService;
-import pl.jazapp.app.webapp.auctions.photos.AuctionPhotoEntity;
+import pl.jazapp.app.entities.AuctionPhotoEntity;
 import pl.jazapp.app.repositories.AuctionPhotoRepository;
-import pl.jazapp.app.webapp.categories.CategoryEntity;
+import pl.jazapp.app.entities.CategoryEntity;
 import pl.jazapp.app.services.login.LoginService;
 import pl.jazapp.app.webapp.users.UserContext;
 

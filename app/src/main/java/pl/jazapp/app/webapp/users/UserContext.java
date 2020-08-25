@@ -2,6 +2,7 @@ package pl.jazapp.app.webapp.users;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.jazapp.app.entities.UserEntity;
 import pl.jazapp.app.repositories.UserRepository;
 import pl.jazapp.app.webapp.login.LoginRequest;
 import pl.jazapp.app.services.login.LoginService;

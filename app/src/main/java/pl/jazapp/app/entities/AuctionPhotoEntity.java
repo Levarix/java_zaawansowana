@@ -1,6 +1,4 @@
-package pl.jazapp.app.webapp.auctions.photos;
-
-import pl.jazapp.app.webapp.auctions.AuctionEntity;
+package pl.jazapp.app.entities;
 
 import javax.persistence.*;
 

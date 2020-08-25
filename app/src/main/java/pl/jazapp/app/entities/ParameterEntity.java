@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.auctions.parameters;
+package pl.jazapp.app.entities;
 
 import javax.persistence.*;
 

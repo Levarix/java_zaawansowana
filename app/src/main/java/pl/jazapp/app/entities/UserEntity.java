@@ -1,6 +1,6 @@
-package pl.jazapp.app.webapp.users;
+package pl.jazapp.app.entities;
 
-import pl.jazapp.app.webapp.auctions.AuctionEntity;
+import pl.jazapp.app.entities.AuctionEntity;
 
 import javax.persistence.*;
 import java.util.List;

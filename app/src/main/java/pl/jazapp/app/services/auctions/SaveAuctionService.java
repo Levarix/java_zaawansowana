@@ -1,8 +1,6 @@
 package pl.jazapp.app.services.auctions;
 
-import pl.jazapp.app.webapp.auctions.AuctionEntity;
-import pl.jazapp.app.webapp.categories.CategoryEntity;
-import pl.jazapp.app.webapp.departments.DepartmentEntity;
+import pl.jazapp.app.entities.AuctionEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

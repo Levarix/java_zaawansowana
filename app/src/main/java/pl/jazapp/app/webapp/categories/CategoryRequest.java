@@ -1,6 +1,6 @@
 package pl.jazapp.app.webapp.categories;
 
-import pl.jazapp.app.webapp.departments.DepartmentEntity;
+import pl.jazapp.app.entities.CategoryEntity;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

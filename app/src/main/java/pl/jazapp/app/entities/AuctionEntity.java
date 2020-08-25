@@ -1,8 +1,4 @@
-package pl.jazapp.app.webapp.auctions;
-
-import pl.jazapp.app.webapp.auctions.photos.AuctionPhotoEntity;
-import pl.jazapp.app.webapp.categories.CategoryEntity;
-import pl.jazapp.app.webapp.users.UserEntity;
+package pl.jazapp.app.entities;
 
 import javax.persistence.*;
 import java.util.List;

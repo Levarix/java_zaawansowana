@@ -2,6 +2,7 @@ package pl.jazapp.app.webapp.departments;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.jazapp.app.entities.DepartmentEntity;
 import pl.jazapp.app.repositories.DepartmentRepository;
 import pl.jazapp.app.services.departments.AddDepartmentService;
 import pl.jazapp.app.services.departments.DepartmentGetAllService;

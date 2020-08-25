@@ -1,6 +1,6 @@
 package pl.jazapp.app.services.categories;
 
-import pl.jazapp.app.webapp.categories.CategoryEntity;
+import pl.jazapp.app.entities.CategoryEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

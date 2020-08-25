@@ -1,6 +1,6 @@
 package pl.jazapp.app.repositories;
 
-import pl.jazapp.app.webapp.departments.DepartmentEntity;
+import pl.jazapp.app.entities.DepartmentEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

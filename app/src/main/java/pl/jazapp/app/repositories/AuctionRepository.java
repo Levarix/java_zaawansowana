@@ -1,7 +1,7 @@
 package pl.jazapp.app.repositories;
 
-import pl.jazapp.app.webapp.auctions.AuctionEntity;
-import pl.jazapp.app.webapp.users.UserEntity;
+import pl.jazapp.app.entities.AuctionEntity;
+import pl.jazapp.app.entities.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
