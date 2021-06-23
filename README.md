@@ -7,4 +7,4 @@ Kiedy odwołuje się lokalnie po zdefiniowanym adresie maciej.local, dzięki wpi
 ### Czym różni się Reverse Proxy od Forward Proxy?
 Forward Proxy jest niczym innym jak przekazywaniem pakietów do docelowego hosta, z tym, że odbiorca identyfikuję nadawcę nie po hoście, z którego zostało wysłane zapytanie, a po hoście na którym został ustawiony forward proxy.
 
-Reverse Proxy z kolei jest usługą pośredninczącą na ogół pomiędzy kilkoma serwisami, dzięki temu host, który próbuję dostać się do jakiegoś serwisu może użyć nazwy domenowej na porcie 80/443, a nie musi znać portu usługi, również na poziomie Reverse Proxy można przypisać ceryfikat SSL do naxwy domenowej danego serwisu.
+Reverse Proxy z kolei jest usługą pośredninczącą na ogół pomiędzy kilkoma serwisami, dzięki temu host, który próbuję dostać się do jakiegoś serwisu może użyć nazwy domenowej na porcie 80/443, a nie musi znać portu usługi, również na poziomie Reverse Proxy można przypisać ceryfikat SSL do nazwy domenowej danego serwisu.
